@@ -1,0 +1,13 @@
+// backend/routes/userRoutes.js
+
+// 1. Import the Express library to get access to the Router
+const express = require('express');
+const router = express.Router();
+const { registerUser, loginUser } = require('../controllers/userController');
+
+
+router.post('/register', registerUser);
+
+router.post('/login', loginUser);
+
+module.exports = router;

@@ -20,6 +20,7 @@ router.get('/:id', getEventById);
 // Private (Organizer-only) Routes
 router.post('/', [protect, organizer], createEvent);
 
+
 router
   .route('/:id')
   .put([protect, organizer], updateEvent)

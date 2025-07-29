@@ -1,21 +1,14 @@
 // backend/controllers/eventController.js
 
-// This utility wraps our async functions, catching any errors and passing them to our error-handling middleware.
 const asyncHandler = require('express-async-handler');
-
-// We need our Event model to interact with the events collection in the database.
 const Event = require('../models/eventModel.js');
 
-// --- Placeholder Functions ---
-
 const createEvent = asyncHandler(async (req, res) => {
-   console.log('🔍 Incoming event creation request...');
+  console.log('🔍 Incoming event creation request...');
   console.log('🧾 Request body:', req.body);
   console.log('👤 Logged in user:', req.user);
-  // 1. Destructure the event data from the request body.
   const { title, description, date, location, image, ticketTypes } = req.body;
 
-  // 2. Perform basic validation to ensure all required fields are present.
   if (!title || !description || !date || !location || !image || !ticketTypes) {
     res.status(400); // Bad Request
     throw new Error('Please include all event fields');
@@ -35,27 +28,18 @@ const createEvent = asyncHandler(async (req, res) => {
 });
 
 const getEvents = asyncHandler(async (req, res) => {
-
   const events = await Event.find({}).sort({ date: 1 });
-  // 3. Send the array of events back to the client as a JSON response.
-  // A 200 OK status is the standard for a successful GET request.
   res.status(200).json(events);
-  // highlight-end
 });
 
 
 const getEventById = asyncHandler(async (req, res) => {
   const event = await Event.findById(req.params.id);
 
-  // 2. Check if an event was actually found.
   if (event) {
-    // If the event exists, send it back with a 200 OK status.
     res.status(200).json(event);
   } else {
-    // 3. If event is null (not found), we should set a specific error status.
-    // 404 Not Found is the standard code for a missing resource.
     res.status(404);
-    // Throw an error to be caught by our error handling middleware.
     throw new Error('Event not found');
   }
 });
@@ -63,7 +47,6 @@ const getEventById = asyncHandler(async (req, res) => {
 const getOrganizerEvents = asyncHandler(async (req, res) => {
   const events = await Event.find({ organizer: req.user._id });
 
-  // 2. Send the resulting array of events back to the client.
   // If the organizer has not created any events, this will correctly return an empty array [].
   res.status(200).json(events);
   // highlight-end

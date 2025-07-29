@@ -31,7 +31,7 @@ const createPaymentIntent = asyncHandler(async (req, res) => {
     }
     // (Optional) Validate stock: if (item.quantity > ticketType.quantity) throw new Error('Not enough tickets');
     totalAmount += ticketType.price * item.quantity;
-  }
+  }   
 
   // ✅ Create Ticket documents for each purchased item
   const createdTickets = [];

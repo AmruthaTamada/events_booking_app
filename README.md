@@ -127,8 +127,6 @@ During debugging, keep API base URL → http://localhost:5000
 
 👨‍💻 Author
 
-Your Name – Full-Stack Developer
+Amrutha TESR – Full-Stack Developer
 
-📌 GitHub: your-username
-
-📌 LinkedIn: your-linkedin
+📌 LinkedIn: https://www.linkedin.com/in/amrutha-tesr-47a20724b/

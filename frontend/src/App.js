@@ -11,7 +11,7 @@ import CreateEventPage from './pages/CreateEventPage';
 import EventDetailPage from './pages/EventDetailPage';
 import OrganizerDashboardPage from './pages/OrganizerDashboardPage';
 import MyTicketsPage from './pages/MyTicketsPage';
-import UpdateEventPage from './pages/UpdateEventPage'; // ✅ Added this line
+import UpdateEventPage from './pages/UpdateEventPage';
 
 function App() {
   return (
